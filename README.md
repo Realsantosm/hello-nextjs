@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hello Next.js Project
+
+This is a comprehensive [Next.js](https://nextjs.org) project created for [the Modern Full Stack Next.js Course](https://nextjscourse.dev/?utm_source=github).
+
+## Project Overview
+
+This project demonstrates:
+
+- Next.js 15 with App Router
+- React 19 with latest features
+- TypeScript for type safety
+- TailwindCSS for styling
+- Client and Server Components
+- Dynamic routing with blog posts
+- Modern ESLint configuration
 
 ## Getting Started
 
@@ -16,21 +30,28 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/` - Contains all page routes using the App Router
+- `components/` - Reusable UI components
+- `app/page.tsx` - Main homepage with a demo button component
+- `app/about/page.tsx` - About page route
+- `app/blog/[id]/page.tsx` - Dynamic blog post routes
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **App Router**: Utilizes Next.js 15's App Router for improved routing
+- **React 19**: Takes advantage of the latest React features
+- **TailwindCSS**: Modern utility-first CSS framework
+- **TypeScript**: Full type safety throughout the application
+- **Turbopack**: Enabled for faster development experience
+- **Client Components**: Interactive UI elements with client-side JavaScript
+- **Dynamic Routes**: Demonstrates parameterized routes for blog posts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Styling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project uses:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- TailwindCSS for utility-based styling
+- CSS variables for theming with dark mode support
+- Inter font from Google Fonts

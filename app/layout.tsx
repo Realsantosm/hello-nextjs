@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Hello Next.js",
-  description: "This is a Hello World Next.js App",
+  title: "🚀 Fly High",
+  description: "This is a comprehensive Next.js project created for the Modern Full Stack Next.js Course.",
 };
 
 export default function RootLayout({

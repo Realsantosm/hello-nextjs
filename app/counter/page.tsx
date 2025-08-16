@@ -10,7 +10,7 @@ export default function Counter() {
   const reset = () => setCount(0);
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col justify-center items-center gap-4 mx-auto">
       <h2 className="text-8xl font-bold">
         <span className="">
         Counter: {count > 10 ? "🔥" : count < -10 ? "💔" : ""} {count}

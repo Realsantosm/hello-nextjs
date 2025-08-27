@@ -39,7 +39,7 @@ export default function QRCodeApp() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+      <header className="bg-white shadow-md py-4 px-6 flex justify-center items-center">
         <h1 className="text-2xl font-bold text-blue-700">QR Code Generator</h1>
       </header>
 
@@ -67,7 +67,7 @@ export default function QRCodeApp() {
               <input
                 type="url"
                 placeholder="Enter URL"
-                className="flex-grow border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-grow border text-gray-600 text-gray-400 border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 required
@@ -93,7 +93,7 @@ export default function QRCodeApp() {
                     margin: 2,
                     scale: 12,
                     color: {
-                      dark: '#1e40af', // blue-800
+                      dark: '#000000', // blue-800
                       light: '#f3f4f6', // gray-100
                     },
                     errorCorrectionLevel: 'H',
@@ -102,7 +102,7 @@ export default function QRCodeApp() {
               </div>
               <button
                 onClick={handleDownload}
-                className="mt-6 bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition flex items-center gap-2"
+                className="mt-6 bg-blue-800 text-white px-5 py-2 rounded hover:bg-blue-700 transition flex items-center gap-2"
               >
                 <span>Download PNG</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -116,7 +116,7 @@ export default function QRCodeApp() {
 
       {/* Footer */}
       <footer className="bg-white shadow-inner py-4 text-center text-gray-500 text-sm">
-        &copy; 2025 QR Code Generator. All rights reserved.
+        &copy; 2025 Made with 💖 All rights reserved - created By : Santos Mmu.
       </footer>
     </div>
   );

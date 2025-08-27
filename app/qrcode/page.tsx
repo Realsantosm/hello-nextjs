@@ -7,7 +7,7 @@ export default function QRCodeApp() {
   const { Canvas } = useQRCode();
   const [url, setUrl] = useState('');
   const [qrValue, setQrValue] = useState('');
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const qrRef = useRef(null);
 
   // Generate QR code
   const handleGenerate = (e) => {
@@ -17,15 +17,23 @@ export default function QRCodeApp() {
 
   // Download QR code as PNG
   const handleDownload = () => {
-    if (!canvasRef.current) return;
-    const canvas = canvasRef.current;
-    const pngUrl = canvas.toDataURL('image/png');
-    const downloadLink = document.createElement('a');
-    downloadLink.href = pngUrl;
-    downloadLink.download = 'qr-code-logo.png';
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
+    const canvas = document.querySelector('canvas');
+    if (!canvas) {
+      console.error('Canvas not found');
+      return;
+    }
+
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = `qr-code-${new Date().getTime()}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error('Error downloading QR code:', err);
+    }
   };
 
   return (
@@ -37,7 +45,7 @@ export default function QRCodeApp() {
 
       <div className="flex flex-1">
         {/* Optional Sidebar */}
-        <aside className="hidden md:block w-64 bg-white shadow-md p-6">
+        {/* <aside className="hidden md:block w-64 bg-white shadow-md p-6">
           <nav className="space-y-4">
             <a href="#" className="block py-2 px-4 rounded hover:bg-blue-100 text-blue-700 font-medium">
               Home
@@ -49,7 +57,7 @@ export default function QRCodeApp() {
               Contact
             </a>
           </nav>
-        </aside>
+        </aside> */}
 
         {/* Main content */}
         <main className="flex-grow p-6 max-w-3xl mx-auto w-full">
@@ -77,25 +85,29 @@ export default function QRCodeApp() {
           {qrValue && (
             <section className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center">
               <h2 className="text-xl font-semibold mb-4 text-gray-800">QR Code Preview</h2>
-              <Canvas
-                ref={canvasRef}
-                text={qrValue}
-                options={{
-                  width: 240,
-                  margin: 2,
-                  scale: 12,
-                  color: {
-                    dark: '#1e40af', // blue-800
-                    light: '#f3f4f6', // gray-100
-                  },
-                  errorCorrectionLevel: 'H',
-                }}
-              />
+              <div ref={qrRef}>
+                <Canvas
+                  text={qrValue}
+                  options={{
+                    width: 240,
+                    margin: 2,
+                    scale: 12,
+                    color: {
+                      dark: '#1e40af', // blue-800
+                      light: '#f3f4f6', // gray-100
+                    },
+                    errorCorrectionLevel: 'H',
+                  }}
+                />
+              </div>
               <button
                 onClick={handleDownload}
-                className="mt-6 bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition"
+                className="mt-6 bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition flex items-center gap-2"
               >
-                Download PNG
+                <span>Download PNG</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
               </button>
             </section>
           )}

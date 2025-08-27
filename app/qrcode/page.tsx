@@ -7,7 +7,7 @@ export default function QRCodeApp() {
   const { Canvas } = useQRCode();
   const [url, setUrl] = useState('');
   const [qrValue, setQrValue] = useState('');
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Generate QR code
   const handleGenerate = (e) => {
